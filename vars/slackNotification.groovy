@@ -11,10 +11,10 @@ def call(String buildResult, String channel) {
     slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was unstable. \nCheck results <${env.RUN_DISPLAY_URL}|here>."
   }
   else if( buildResult == "APPROVE" ) { 
-    slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires approval. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
+    slackSend color: "#0031bb",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires approval. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
   }
   else if( buildResult == "ATTENTION" ) { 
-    slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires manual action. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
+    slackSend color: "#0031bb",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires manual action. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
   }
   else if( buildResult == "START" ) { 
     slackSend color: '#909090',channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} started. \nCheck status <${env.RUN_DISPLAY_URL}|here>."
