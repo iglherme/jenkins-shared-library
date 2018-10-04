@@ -10,6 +10,15 @@ def call(String buildResult, String channel) {
   else if( buildResult == "UNSTABLE" ) { 
     slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was unstable. \nCheck results <${env.RUN_DISPLAY_URL}|here>."
   }
+  else if( buildResult == "APPROVE" ) { 
+    slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires approval. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
+  }
+  else if( buildResult == "ATTENTION" ) { 
+    slackSend color: "warning",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} requires manual action. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
+  }
+  else if( buildResult == "START" ) { 
+    slackSend color: '#909090',channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} started. \nPerform this action <${env.RUN_DISPLAY_URL}|here>."
+  }   
   else {
     slackSend color: "danger",channel: channel, message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} its resulat was unclear. \nCheck results <${env.RUN_DISPLAY_URL}|here>."	
   }
